@@ -1,0 +1,30 @@
+{
+  "name": "ice-server",
+  "version": "1.0.0",
+  "description": "A simple webserver using node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/who-icyy/icyy-server.git"
+  },
+  "keywords": [
+    "webserver",
+    "backend",
+    "node",
+    "js",
+    "javasctipt",
+    "node"
+  ],
+  "author": "who-icyy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/who-icyy/icyy-server/issues"
+  },
+  "homepage": "https://github.com/who-icyy/icyy-server#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
