@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/who-icyy/icyy-server#readme",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "mongoose": "^8.7.1"
   }
 }
