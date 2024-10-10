@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const dotenv = require("dotenv");
 const app = express();
 
 async function getLocation(ip) {
@@ -25,7 +26,7 @@ app.get('/', (req, res) => {
 
 
 const PORT = 3000;
-const HOST = "Your IP";
+const HOST = process.env.IP;
 app.listen(PORT, HOST, () => {
     console.log(`Server is running on http://${HOST}:${PORT}`);
 });
