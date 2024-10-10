@@ -1,32 +1,35 @@
 const express = require('express');
 const axios = require('axios');
-const dotenv = require("dotenv");
 const app = express();
 
-async function getLocation(ip) {
+async function getPublicIPLocation() {
     try {
-        const response = await axios.get(`http://ip-api.com/json/${ip}`);
-        console.log(response.data);
+      const ipResponse = await axios.get('https://api.ipify.org?format=json');
+
+      const publicIP = ipResponse.data.ip;
+      
+      const locationResponse = await axios.get(`https://ipinfo.io/${publicIP}/json?token=YOUR_TOKEN`);
+
+      console.table(locationResponse.data)
+
+      
+
     } catch (error) {
-        console.error('Error fetching location:', error);
+      console.error('Error:', error.message);
     }
-}
+  }
 
 app.set("trust proxy", true);
 
-app.use((req, resp, next) => {
-    const ip = req.ip;
-    getLocation(ip);
-    
-})
+getPublicIPLocation()
 
 app.get('/', (req, res) => {
-    res.send('Hello, World! This is a simple web server using Express.js');
+    getPublicIPLocation()
 });
 
 
 const PORT = 3000;
-const HOST = process.env.IP;
+const HOST = "YOUR IP ADDRESS";
 app.listen(PORT, HOST, () => {
     console.log(`Server is running on http://${HOST}:${PORT}`);
 });
