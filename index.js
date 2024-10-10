@@ -21,8 +21,6 @@ async function getPublicIPLocation() {
 
 app.set("trust proxy", true);
 
-getPublicIPLocation()
-
 app.get('/', (req, res) => {
     getPublicIPLocation()
 });
