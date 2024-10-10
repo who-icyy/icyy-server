@@ -20,5 +20,5 @@ A simple Node.js application that captures the user's local IP address and provi
    git clone https://github.com/who-icyy/ip-location-finder.git
    cd ip-location-finder
    npm install
-   node index
-```
+   node index 
+   ```
