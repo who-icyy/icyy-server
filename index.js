@@ -24,10 +24,6 @@ async function getPublicIPLocation() {
     console.table(geo)
 
 
-    const locationResponse = await axios.get(`https://ipinfo.io/${publicIP}/json?token=YOUR_TOKEN`);
-
-    console.table(locationResponse.data)
-
   } catch (error) {
     console.error('Error:', error.message);
   }
