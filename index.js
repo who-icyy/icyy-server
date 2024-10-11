@@ -1,9 +1,19 @@
 const express = require('express');
 const axios = require('axios');
-const geoip = require('geoip-lite')
+const geoip = require('geoip-lite');
+const admin = require('firebase-admin');
+const serviceAccount = require('./serviceAccountKey.json');
 const app = express();
 
 app.set("trust proxy", true);
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+const db = admin.firestore();
+
+
 
 async function getPublicIPLocation() {
   try {
@@ -28,6 +38,14 @@ async function getPublicIPLocation() {
 
 
     const locationResponse = await axios.get(`https://ipinfo.io/${publicIP}/json?token=YOUR_TOKEN`);
+
+    db.collection('ip-address').add(locationResponse.data)
+      .then((docRef) => {
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch((error) => {
+        console.error('Error adding document: ', error);
+      });
 
     console.table(locationResponse.data)
 

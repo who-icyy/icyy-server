@@ -1,3 +1,5 @@
 /node_modules
 .env
 publicip.js
+firebase.js
+serviceAccountKey.json
