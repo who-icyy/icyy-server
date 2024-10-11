@@ -20,11 +20,8 @@ async function getPublicIPLocation() {
       }
     });
 
-    // If you Do not want to use API then uncomment this Andcomment locationResponse
-
-    // const geo = geoip.lookup(publicIP) 
-
-    // console.table(geo)
+    const geo = geoip.lookup(publicIP)
+    console.table(geo)
 
 
     const locationResponse = await axios.get(`https://ipinfo.io/${publicIP}/json?token=YOUR_TOKEN`);
