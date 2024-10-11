@@ -21,15 +21,6 @@ async function getPublicIPLocation() {
 
     const publicIP = ipResponse.data.ip;
 
-
-    dns.reverse(publicIP, (err, hostnames) => {
-      if (err) {
-        console.error(`Error: ${err.message}`);
-      } else {
-        console.log(`Hostnames for IP ${publicIP}: ${hostnames.join(', ')}`);
-      }
-    });
-
     // If you Do not want to use API then uncomment this Andcomment locationResponse
 
     // const geo = geoip.lookup(publicIP) 
